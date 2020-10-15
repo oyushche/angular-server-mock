@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +25,10 @@ export class AppComponent implements OnInit {
       this.http.get<User[]>("api/users").subscribe(users => this.users = users);
       this.http.get<Section[]>("api/sections").subscribe(sections => this.sections = sections);
       this.http.get<Note[]>("api/notes").subscribe(notes => this.notes = notes);
+
+      // Notes with section filter
+      this.http.get<Note[]>("api/notes", { params: new HttpParams().set('section', 'Work') })
+        .subscribe(notes => console.dir(notes));
   }
 
   addUser()
