@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import {InMemoryDbService} from 'angular-in-memory-web-api';
 
+
+/**
+ * How to use here:
+ * https://www.npmjs.com/package/angular-in-memory-web-api
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 15, text: 'Tornado', section: 'Home' },
     ];
 
-    return {notes, sections, users};
+    return { notes, sections, users };
   }
 
   genId(): number {

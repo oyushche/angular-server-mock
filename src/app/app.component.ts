@@ -29,6 +29,12 @@ export class AppComponent implements OnInit {
       // Notes with section filter
       this.http.get<Note[]>("api/notes", { params: new HttpParams().set('section', 'Work') })
         .subscribe(notes => console.dir(notes));
+
+      // Search by user name
+      this.http.get<User[]>("api/users?name=^I").subscribe(users =>
+      {
+          console.log("(api/users?name=^I) found users: " + JSON.stringify(users))
+      });
   }
 
   addUser()
